@@ -9,6 +9,4 @@ lessThan(QT_VERSION, "5.5.1") {
 }
 
 TEMPLATE = subdirs
-SUBDIRS += google_bridge
-
-OTHER_FILES += README.md
+SUBDIRS += cld2.pro
