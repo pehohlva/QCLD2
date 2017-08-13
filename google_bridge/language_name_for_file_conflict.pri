@@ -11,7 +11,7 @@
 
 header_files.files = $$HEADERS
 header_files.files += $$PWD/cld2/public/*
-header_files.files += $$PWD/cld2/internal/*
+header_files.files += $$PWD/dummy.h
 
 
 DEPENDPATH += $$PWD/cld2/internal
@@ -19,7 +19,8 @@ INCLUDEPATH += $$PWD/cld2/public
 INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
 
-SOURCES += $$PWD/cld2/internal/cldutil.cc  \
+SOURCES += $$PWD/qlsd2.cpp  \
+   $$PWD/cld2/internal/cldutil.cc  \
    $$PWD/cld2/internal/cldutil_shared.cc  \
    $$PWD/cld2/internal/compact_lang_det.cc   \
    $$PWD/cld2/internal/compact_lang_det_hint_code.cc \
@@ -43,7 +44,8 @@ SOURCES += $$PWD/cld2/internal/cldutil.cc  \
   $$PWD/cld2/internal/cld2_generated_distinctoctachrome.cc \
   $$PWD/cld2/internal/cld_generated_score_quad_octa_2.cc
 
-  HEADERS += $$PWD/cld2/internal/cldutil.h \
+  HEADERS += $$PWD/qlsd2.h  \
+  $$PWD/cld2/internal/cldutil.h \
   $$PWD/cld2/internal/cldutil_shared.h  \
   $$PWD/cld2/internal/compact_lang_det_hint_code.h \
   $$PWD/cld2/internal/compact_lang_det_impl.h   \
