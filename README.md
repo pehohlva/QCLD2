@@ -37,6 +37,7 @@ A module for recognizing the language in the QT Framework deriving by Google cod
 * Not Testet on Window box, it run inside Mac Osx El Capitan & Unix.
 
 To build module lib get recursive the source to include google code cdl2 from other path.
-git clone --recursive https://github.com/pehohlva/QCLD2
+
+`git clone --recursive https://github.com/pehohlva/QCLD2`
 
 To compile QCLD2 run `qmake & make & make install`  from top path 
