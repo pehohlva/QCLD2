@@ -1,0 +1,3 @@
+[submodule "google_bridge/cld2"]
+	path = google_bridge/cld2
+	url = https://github.com/CLD2Owners/cld2
