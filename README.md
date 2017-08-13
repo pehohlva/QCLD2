@@ -34,7 +34,7 @@ A module for recognizing the language in the QT Framework deriving by Google cod
 ### Requirements
 * [Qt](https://www.qt.io/) version 5.5.1 or above. Required modules: Qt Core to test.
 * [libarchive](http://libarchive.org/).
-* Not Tested on Window box, it run inside Mac Osx El Capitan & Unix.
+* Not Testet on Window box, it run inside Mac Osx El Capitan & Unix.
 
 To build module lib get recursive the source to include google code cdl2 from other path.
 git clone --recursive https://github.com/pehohlva/QCLD2
