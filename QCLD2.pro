@@ -9,6 +9,8 @@ lessThan(QT_VERSION, "5.5.1") {
 }
 
 TEMPLATE = subdirs
-SUBDIRS += google_bridge
+SUBDIRS += hook \
+      google_bridge \
+      test 
 
 OTHER_FILES += README.md
