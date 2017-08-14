@@ -2,4 +2,4 @@
 pwd
 rm -rf build Makefile libqcld2.a
 echo clean dir now
-qmake && make
+qmake && make && make install

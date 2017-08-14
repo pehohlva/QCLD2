@@ -2,7 +2,7 @@
 #
 # resume on https://github.com/CLD2Owners/cld2/blob/master/internal/compile_libs.sh
 # git clone https://github.com/CLD2Owners/cld2
-#
+#  this file give error if take false data from int uint32 on /usr/local/include !!
 #    $$PWD/cld2/internal/scoreonescriptspan.h \
 #    $$PWD/cld2/internal/scoreonescriptspan.cc \
 #
@@ -20,6 +20,7 @@ INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
 
 SOURCES += $$PWD/qlsd2.cpp  \
+   $$PWD/cld2/internal/scoreonescriptspan.cc \
    $$PWD/cld2/internal/cldutil.cc  \
    $$PWD/cld2/internal/cldutil_shared.cc  \
    $$PWD/cld2/internal/compact_lang_det.cc   \
@@ -45,6 +46,7 @@ SOURCES += $$PWD/qlsd2.cpp  \
   $$PWD/cld2/internal/cld_generated_score_quad_octa_2.cc
 
   HEADERS += $$PWD/qlsd2.h  \
+  $$PWD/cld2/internal/scoreonescriptspan.h \
   $$PWD/cld2/internal/cldutil.h \
   $$PWD/cld2/internal/cldutil_shared.h  \
   $$PWD/cld2/internal/compact_lang_det_hint_code.h \
