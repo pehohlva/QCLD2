@@ -20,12 +20,13 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set (CMAKE_CXX_STANDARD 11)
 
-include_directories(./internal)
-include_directories(./public)  
-include_directories(./)  
+include_directories(../include)
+include_directories(../google_bridge/cld2/public)  
+include_directories(../google_bridge/cld2)  
 add_executable(${PROJECT_NAME} "main.cpp")
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-target_link_libraries(${PROJECT_NAME} /Users/dev/sandbox/cld2/lib/libcld2.a)
+# brew install target_link_libraries(${PROJECT_NAME} /usr/local/lib/libcld2.a)
+target_link_libraries(${PROJECT_NAME} /usr/local/lib/libqcld2.a)
 
 qt5_use_modules(${PROJECT_NAME} Core)
 

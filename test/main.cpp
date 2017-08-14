@@ -168,6 +168,11 @@ See also fromUtf8(), toUtf8(), toLatin1(), toLocal8Bit(), QTextCodec, fromUcs4()
                           bool is_plain_text,
                           bool* is_reliable,
                           int* valid_prefix_bytes);
+   Language DetectLanguage(
+                          const char* buffer,
+                          int buffer_length,
+                          bool is_plain_text,
+                          bool* is_reliable);
 
 */
 
@@ -198,7 +203,7 @@ int valid_prefix_bytes = 0;
        CHECKTIME( 
              const QString xnow = QString::fromStdString(iter->first);
              src = qPrintable(xnow);
-            Language lang = DetectLanguageCheckUTF8(src,strlen(src),is_plain_text,&is_reliable,&valid_prefix_bytes);
+            Language lang = DetectLanguage(src,strlen(src),is_plain_text,&is_reliable);
             std::cout << "-------------------------------------------------------\n";
             std::cout << "Chck text:\n";
 		    std::cout << iter->first << "\n";

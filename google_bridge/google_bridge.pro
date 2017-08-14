@@ -1,4 +1,14 @@
 
+# patch korea file key from generated file by google
+message( Work init on dir... $$PWD )
+
+QMAKE_PRE_LINK += echo "Prelink echo  ORDER BEFORE MAKE................INIT"
+QMAKE_POST_LINK += echo "Postlink echo ORDER AFTER MAKE ............. END"
+# bug not work !! 
+QMAKE_PRE_LINK += ./prebuild.sh
+QMAKE_POST_LINK += ./prebuild.sh
+
+
 include(language_name_for_file_conflict.pri)
 INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
@@ -9,15 +19,15 @@ CONFIG += c++11
 LANGUAGE	= C++
 DEFINES += NDEBUG THREAD_SAFE=1 TEMP_STORE=2 WFLAGS=-Wall
 TEMPLATE = lib
-TARGET = cld2
+TARGET = qcld2
 CONFIG += qt warn_on staticlib silence
 #CONFIG += staticlib warn_off
 CONFIG += release
 # move only from includes dir!
-header_files.path = ../include
+header_files.path = /usr/local/include
 INSTALLS += header_files
 
-BINDIR = ../lib
+BINDIR = /usr/local/lib
 target.path = $$BINDIR
 INSTALLS += target
 
@@ -37,3 +47,6 @@ OBJECTS_DIR = build
 
 INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
+
+
+message( Work en to qmake on dir... $$PWD )

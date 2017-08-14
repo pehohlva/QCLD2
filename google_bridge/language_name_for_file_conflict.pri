@@ -11,7 +11,7 @@
 
 header_files.files = $$HEADERS
 header_files.files += $$PWD/cld2/public/*
-header_files.files += $$PWD/dummy.h
+header_files.files += $$PWD/qlsd2.h
 
 
 DEPENDPATH += $$PWD/cld2/internal
@@ -35,7 +35,7 @@ SOURCES += $$PWD/qlsd2.cpp  \
   $$PWD/cld2/internal/offsetmap.cc  \
   $$PWD/cld2/internal/tote.cc \
   $$PWD/cld2/internal/utf8statetable.cc  \
-  $$PWD/cld_generated_cjk_uni_prop_80.cc \
+  $$PWD/cld2/internal/cld_generated_cjk_uni_prop_80.cc \
   $$PWD/cld2/internal/cld2_generated_cjk_compatible.cc  \
   $$PWD/cld2/internal/cld_generated_cjk_delta_bi_4.cc \
   $$PWD/cld2/internal/generated_distinct_bi_0.cc  \
