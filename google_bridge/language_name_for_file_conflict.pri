@@ -11,15 +11,16 @@
 
 header_files.files = $$HEADERS
 header_files.files += $$PWD/cld2/public/*
-header_files.files += $$PWD/qlsd2.h
-
+header_files.files += $$PWD/datalanguageprovider.h
+header_files.files += $$PWD/qtrlocale.h
 
 DEPENDPATH += $$PWD/cld2/internal
 INCLUDEPATH += $$PWD/cld2/public
 INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
 
-SOURCES += $$PWD/qlsd2.cpp  \
+SOURCES += $$PWD/qtrlocale.cpp  \
+   $$PWD/datalanguageprovider.cpp \
    $$PWD/cld2/internal/scoreonescriptspan.cc \
    $$PWD/cld2/internal/cldutil.cc  \
    $$PWD/cld2/internal/cldutil_shared.cc  \
@@ -45,7 +46,8 @@ SOURCES += $$PWD/qlsd2.cpp  \
   $$PWD/cld2/internal/cld2_generated_distinctoctachrome.cc \
   $$PWD/cld2/internal/cld_generated_score_quad_octa_2.cc
 
-  HEADERS += $$PWD/qlsd2.h  \
+  HEADERS += $$PWD/qtrlocale.h  \
+   $$PWD/datalanguageprovider.h \
   $$PWD/cld2/internal/scoreonescriptspan.h \
   $$PWD/cld2/internal/cldutil.h \
   $$PWD/cld2/internal/cldutil_shared.h  \
