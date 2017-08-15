@@ -48,5 +48,4 @@ OBJECTS_DIR = build
 INCLUDEPATH += /usr/local/include
 DEPENDPATH += /usr/local/include
 
-
 message( Work en to qmake on dir... $$PWD )
