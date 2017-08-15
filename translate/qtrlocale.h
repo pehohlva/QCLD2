@@ -27,7 +27,6 @@
 #include <fstream>
 #include <stdio.h>
 #include <iostream>
-
 #include "datalanguageprovider.h"
 
 QString html_encode(const QString &string);
@@ -38,16 +37,17 @@ int  hit_Script_found( QString text );
 /// avaiable script in qchar
 static int sumscritpsLang =131;
 
+class DataLocaleProvider;
+
 class QTrlocale : public QObject
 {
 
-
   Q_OBJECT
-
-
 
 public:
   explicit QTrlocale(const int modus = 1 , QObject *parent = nullptr);
+  /// from class QLocale get all info...
+  QLocale getQlocaleFromText( const QString txt );
   bool isLatinLang( QString txt );
   QString CodingCld( QString txt );
   QString CodingChar( QString txt );
@@ -61,10 +61,10 @@ signals:
 public slots:
 
 private:
-  friend class DataLocaleProvider;
   QHash<QByteArray, QChar::Script> scriptMap;
   void initScriptMap();
   int d;
+  DataLocaleProvider *data;
 };
 
 #endif // QTRLOCALE_H

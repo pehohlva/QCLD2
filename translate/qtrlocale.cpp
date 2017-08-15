@@ -30,6 +30,9 @@ static inline int maxscript(int arr[], int stop, int num)
 //// statistic script() from QChar
 int  hit_Script_found( QString text ) {
     const int nox = text.size();
+    if (nox < 3) {
+        return -1;
+      }
     int *array = new int[nox];
     for (int o = 0; o < text.size(); o++) {
       const QChar vox(text.at(o));
@@ -47,6 +50,8 @@ int  hit_Script_found( QString text ) {
                     mhit.insert ( std::pair<int,int>(hits,NrScript) );
                 }
     }while(NrScript < (sumscritpsLang -2)); /// sum of avaiable script
+    /// delete array
+    delete[] array;
     std::map<int,int>::iterator it = mhit.begin();
     for (it=mhit.begin(); it!=mhit.end(); ++it) {
         if (it->first == hitmaxnumber) {
@@ -333,15 +338,13 @@ void QTrlocale::initScriptMap()
     while (p->name) {
         scriptMap.insert(p->name, p->script);
         ++p;
-        /// mmm++;
     }
-    //// qDebug() << mmm  << "<xxxxxxxxx0";
 }
 
 
 
 
-QTrlocale::QTrlocale(const int modus, QObject *parent) : QObject(parent)
+QTrlocale::QTrlocale(const int modus, QObject *parent) : QObject(parent),data(new DataLocaleProvider())
 {
   d=modus;
   this->initScriptMap();
@@ -365,9 +368,9 @@ QString QTrlocale::getnameScriptQChar(const ushort unicode) const { //// uniode 
 
 QString QTrlocale::CodingChar( QString txt ) {
   const int numbero = hit_Script_found(txt);
-  /// QString namex;
+  //// QString namex;
   int ksize=txt.size();
-  if (ksize < 3) {
+  if (ksize < 3 || numbero == -1 ) {
       return QString("FAIL");
     }
   int spinn = -1;
@@ -394,10 +397,17 @@ QString QTrlocale::CodingCld( QString txt ) {
    if (is_reliable) {
        return QString::fromStdString(LanguageName(lang)).toUpper();
      } else {
-       return  QString("FAIL");
+       return CodingChar(txt);
      }
 
 }
+
+
+QLocale QTrlocale::getQlocaleFromText( const QString txt ) {
+    QString lang = CodingCld(txt);
+    return data->qlocaleFromLanguageUnique(lang);
+}
+
 
 void QTrlocale::ReadFile( const QString file ) {
          /// for large file qfile is not fast
@@ -419,7 +429,6 @@ void QTrlocale::ReadFile( const QString file ) {
                       while ( !ifs.eof() )  {
                               getline(ifs, line);
                               QString qline = QString::fromStdString(line);
-                              /// const bool  latinlanguage = this->isLatinLang(qline);
                               if (qline.size() > 130) {
                                   QString zfrom = qline.mid(80);
                                   zfrom.resize(66);
@@ -427,15 +436,13 @@ void QTrlocale::ReadFile( const QString file ) {
                                 }
                               parse++;
                                   const QString rec_lsd = CodingCld(qline);
-                                   const QString rec_char = CodingChar(qline);
-                                   QString rechex = toXexsumm(rec_lsd + rec_char);
-                                   /// if (!setunique.contains(rechex) ) {
-                                       setunique.insert(rechex);
-                                  QString reline = QString("<p>Line nr.") + QString::number(parse) + "-Lan:" + html_encode(rec_lsd) + "|Unicode:" + html_encode(rec_char) + " - " + html_encode("(" + qline + ") <p/>");
+                                   //// const QString rec_char = CodingChar(qline);
+                                   //// QString rechex = toXexsumm(rec_lsd + rec_char);
+
+                                  QString reline = QString("<p>Line nr.") + QString::number(parse) + "-Lan:" + html_encode(rec_lsd) + " - " + html_encode("(" + qline + ") <p/>");
                                       ////// std::cout << parse <<  " - " << qPrintable(CodingCld(qline))  << ","  << qPrintable(CodingChar(qline)) <<  "- ("  << qPrintable(qline) <<  ")\n";
                                       stream <<"HTML:" << qPrintable(reline) << "\n";
                                       tofileend.append(reline);
-                                      /////}
 
                           }
 
@@ -452,7 +459,7 @@ void QTrlocale::wr_47854g76b64() {
   /*     RangeClass *jobs = new RangeClass();
                                   jobs->wr_47854g76b64();
   *  */
-  DataLocaleProvider *datal = new DataLocaleProvider();
+
   QStringList langnames;
   QSet < QString > listing = this->qlocaleList();
   /// qDebug() << listing;
@@ -482,8 +489,8 @@ void QTrlocale::wr_47854g76b64() {
            const QString langname=langnames.at(x);
            QString nativename, tmp, vline;
            int idcharslang = idbirthay(langname);
-           int NUMMERQT = datal->qlocaleLanguageIdqt(langname);
-           datal->get_language_native(NUMMERQT,nativename,tmp); /// tmp is a ocr id.. not need
+           int NUMMERQT = data->qlocaleLanguageIdqt(langname);
+           data->get_language_native(NUMMERQT,nativename,tmp); /// tmp is a ocr id.. not need
            if (nativename.size() < 4) { /// not translate native
                vline = " { \'" + langname + "\',\'" + langname.toLower() + "\'," + QString::number(idcharslang) + "," + QString::number(NUMMERQT) + "}, \n ";
              } else {
