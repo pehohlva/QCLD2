@@ -1,6 +1,10 @@
 
 # patch korea file key from generated file by google
 message( Work init on dir... $$PWD )
+message( Alert if you (!recursive) not git clone --recursive https://github.com/pehohlva/QCLD2 make not posibel to build. )
+
+
+
 
 QMAKE_PRE_LINK += echo "Prelink echo  ORDER BEFORE MAKE................INIT"
 QMAKE_POST_LINK += echo "Postlink echo ORDER AFTER MAKE ............. END"
