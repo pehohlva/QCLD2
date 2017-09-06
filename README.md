@@ -41,3 +41,14 @@ To build module lib get recursive the source to include google code cdl2 from ot
 `git clone --recursive https://github.com/pehohlva/QCLD2`
 
 To compile QCLD2 run `qmake && make && make install`  from top path 
+at end if the lib is build you can compile test dir.
+
+I self use this module inside https://github.com/pehohlva/Tiny_Edit 
+in order to recognize the language to speak in document reading & synthesizer voice.
+
+
+
+
+
+
+
